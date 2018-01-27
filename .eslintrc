@@ -1,0 +1,73 @@
+{
+  "extends": [
+    "eslint:recommended",
+    "plugin:import/errors",
+    "plugin:import/warnings"
+  ],
+
+  "globals": {
+    "google": false,
+    "__locationAlert__": false
+  },
+
+  "env": {
+    "browser": true,
+    "node": true,
+    "es6": true
+  },
+
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module"
+  },
+
+  "plugins": [
+    "prefer-arrow",
+    "import"
+  ],
+
+  "rules": {
+    "indent": ["warn", 2],
+    "no-unused-vars": "warn",
+    "no-empty": "warn",
+    "semi": "warn",
+    "no-var": "warn",
+    "max-params": ["warn", 7],
+    "arrow-body-style": ["warn", "as-needed"],
+    "arrow-parens": ["warn", "always"],
+    "arrow-spacing": "warn",
+    "prefer-arrow/prefer-arrow-functions": ["warn", {
+        "disallowPrototype": true
+      }
+    ],
+    "object-curly-spacing": ["warn", "always"],
+    "object-property-newline": "warn",
+    "spaced-comment": ["warn", "always", {
+      "line": {
+        "markers": ["/"],
+        "exceptions": ["-", "+"]
+      },
+      "block": {
+        "markers": ["!"],
+        "exceptions": ["*"],
+        "balanced": true
+      }
+    }],
+    "space-unary-ops": ["warn", {
+      "words": true,
+      "nonwords": true,
+      "overrides": {
+        "++": false,
+        "--": false,
+        "-": false,
+        "+": true,
+        "!": false
+      }
+    }],
+    "keyword-spacing": ["warn", {
+      "before": true,
+      "after": true
+    }],
+    "no-console": "warn"
+  }
+}
