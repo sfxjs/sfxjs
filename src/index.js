@@ -1,4 +1,5 @@
-import is from './util/is';
+import _ from 'lodash';
+
 const AudioContext = window.AudioContext || window.webkitAudioContext;
 const context = new AudioContext();
 const gainNode = context.createGain();
@@ -6,10 +7,10 @@ gainNode.connect(context.destination);
 
 const sounds = {
   click: {
-    path: './src/media/i.wav'
+    path: './media/i.wav'
   },
   pong: {
-    path: './src/media/pong.wav'
+    path: './media/pong.wav'
   }
 };
 
@@ -36,15 +37,15 @@ const loadSounds = (callback) => {
               allLoaded = false;
             }
           });
-          if (allLoaded && is.function(callback)){
+          if (allLoaded && _.isFunction(callback)){
             callback();
           }
         }
       );
     };
 
-    request.onerror = () => {
-      alert('BufferLoader: XHR error');
+    request.onerror = (error) => {
+      console.error('BufferLoader XHR error: ', error); // eslint-disable-line no-console
     };
 
     request.send();
@@ -70,4 +71,4 @@ const sfx = {
   setVolume
 };
 
-export default sfx;
+module.exports = sfx;

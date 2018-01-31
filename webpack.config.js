@@ -1,22 +1,24 @@
+const webpack = require('webpack');
 const path = require('path');
-const BrowserSyncPlugin = require("browser-sync-webpack-plugin");
 
 module.exports = {
-  context: path.resolve(__dirname, './src'),
+
+  devtool: 'source-map',
+
+  context: path.resolve(__dirname, './'),
+
   entry: {
-    sfx: ['babel-polyfill', './js/index.js']
+    sfx: './src/index.js',
+    test: './test/index.js'
   },
+
   output: {
     path: path.resolve(__dirname, 'dist/'),
     publicPath: 'dist/',
     filename: '[name].js',
-  },
-
-  devServer: {
-    contentBase: './',
-    historyApiFallback: true,
-    inline: true,
-    port: 9000
+    library: 'sfxjs',
+    libraryTarget: 'umd',
+    umdNamedDefine: true
   },
 
   module: {
@@ -37,13 +39,16 @@ module.exports = {
   },
 
   plugins: [
-    new BrowserSyncPlugin({
-      // See https://browsersync.io/docs/options/ for options
-      host: 'localhost',
-      port: 3000, // browsersync port (default)
-      historyApiFallback: true,
-      proxy: 'http://localhost:9000/', // our webpack server
-      open: false // do not open browser automatically
+    new webpack.optimize.OccurrenceOrderPlugin(),
+    new webpack.DefinePlugin({
+      'process.env': {
+        'NODE_ENV': JSON.stringify('production')
+      }
+    }),
+    new webpack.optimize.UglifyJsPlugin({
+      compressor: {
+        warnings: false
+      }
     })
   ]
 };
