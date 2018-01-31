@@ -7,10 +7,10 @@ gainNode.connect(context.destination);
 
 const sounds = {
   click: {
-    path: './media/i.wav'
+    path: 'https://raw.githubusercontent.com/sfxjs/sfxjs/master/media/i.wav'
   },
   pong: {
-    path: './media/pong.wav'
+    path: 'https://raw.githubusercontent.com/sfxjs/sfxjs/master/media/pong.wav'
   }
 };
 
