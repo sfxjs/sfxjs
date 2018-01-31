@@ -64,7 +64,7 @@ const play = (soundName) => {
   source.start(0);
 };
 
-const setVolume = (volume) => gainNode.gain.value = volume / 100;
+const setVolume = (volume) => gainNode.gain.setTargetAtTime(volume / 100, context.currentTime, 0);
 
 const sfx = {
   play,
