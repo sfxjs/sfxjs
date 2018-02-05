@@ -1,17 +1,13 @@
 {
   "name": "sfxjs",
-
   "version": "0.0.1",
-
   "description": "Sound effects library",
-
   "scripts": {
     "build": "webpack --progress --colors --env.production",
-    "dev": "webpack --watch --progress --colors --env=dev"
+    "dev": "webpack --watch --progress --colors --env=dev",
+    "postinstall": "npm run build"
   },
-
   "license": "MIT",
-
   "devDependencies": {
     "babel-core": ">=6.25.0",
     "babel-loader": ">=7.1.1",
